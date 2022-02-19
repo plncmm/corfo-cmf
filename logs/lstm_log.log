@@ -1,0 +1,2 @@
+2022-02-17 13:02:40,641 - loading projection weights from ../data/embeddings/SBW-vectors-300-min5.txt
+2022-02-17 13:04:38,965 - KeyedVectors lifecycle event {'msg': 'loaded (1000653, 300) matrix of type float32 from ../data/embeddings/SBW-vectors-300-min5.txt', 'binary': False, 'encoding': 'utf8', 'datetime': '2022-02-17T13:04:38.957282', 'gensim': '4.1.2', 'python': '3.8.10 (default, Nov 26 2021, 20:14:08) \n[GCC 9.3.0]', 'platform': 'Linux-5.13.0-25-generic-x86_64-with-glibc2.29', 'event': 'load_word2vec_format'}

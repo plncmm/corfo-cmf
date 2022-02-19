@@ -1,0 +1,136 @@
+filepath: ../data/cleaned/cleaned_dataset.xlsx
+sample_frac: 1
+model: beto                      # beto | roberta | lstm | cnn | logistic | nv | random_forest | svm | xgboost |
+device: cuda                                        # cuda | cpu 
+cuda_id: 1                                        # 0, 1 , 2 ..
+
+pre_processing:
+  label: MERCADO_INGRESO                            # MERCADO_INGRESO | TIPO_ENTIDAD | TIPO_PRODUCTO | TIPO_MATERIA | NOMBRE_ENTIDAD |
+  do_lower_case: False                         
+  remove_punctuation: False
+  remove_stopwords: False
+  remove_frequent_words: False
+  stemming: False
+  remove_short_examples: False
+  lemmatization: False
+  
+beto_config: 
+    train_size: 0.8
+    val_size: 0.1
+    test_size: 0.1
+    version: uncased
+    batch_size: 16
+    epochs: 3 
+    lr: 2e-5 
+    eps: 1e-8
+    weight_decay_rate: 0.01
+    num_warmup_steps: 0 # 10% * datasetSize/batchSize
+    max_len: 512
+    output_dir: ../models/beto_models
+
+roberta_config: 
+    train_size: 0.8
+    val_size: 0.1
+    test_size: 0.1
+    batch_size: 8 # 8
+    epochs: 3 # 3
+    lr: 2e-5 # 2 e-5
+    eps: 1e-8
+    weight_decay_rate: 0.01
+    num_warmup_steps: 0
+    max_len: 512
+    output_dir: ../models/roberta_models
+
+cnn_config:
+    train_size: 0.9
+    test_size: 0.1
+    smote: True
+    pre_trained_embs: True
+    trainable_embs: True
+    embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
+    emb_dim: 300
+    output_dir: ../models/cnn_models
+    batch_size: 1024
+    epochs: 3
+    dropout: 0.5
+    dense_units: 128
+    filters: 100
+    kernel_size: 4
+
+lstm_config:
+    train_size: 0.9
+    test_size: 0.1
+    smote: True
+    pre_trained_embs: True
+    trainable_embs: True
+    embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
+    emb_dim: 300
+    output_dir: ../models/lstm_models
+    batch_size: 1024
+    epochs: 3
+    dropout: 0.2
+    hidden_units: 128
+   
+random_forest_config:
+    train_size: 0.9
+    test_size: 0.1
+    smote: True
+    emb_dim: 300
+    n_estimators: 150
+    verbose: True
+    analyzer: word
+    max_features: 100000
+    use_embeddings: True
+    balanced: True
+    embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
+    output_dir: ../models/random_forest_models
+
+logistic_config:
+    train_size: 0.9
+    test_size: 0.1
+    smote: True
+    emb_dim: 300
+    verbose: 4
+    max_features: 100000
+    use_embeddings: False
+    embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
+    output_dir: ../models/logistic_models
+    analyzer: word
+
+svm_config:
+    train_size: 0.9
+    test_size: 0.1
+    smote: True
+    emb_dim: 300
+    C: 1.0   
+    kernel: linear
+    degree: 3
+    gamma: auto
+    class_weight: balanced
+    max_features: 100000
+    use_embeddings: False
+    embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
+    output_dir: ../models/svm_models
+    analyzer: word
+
+nv_config:
+    train_size: 0.9
+    test_size: 0.1
+    emb_dim: 300
+    smote: True
+    max_features: 100000
+    use_embeddings: True
+    embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
+    output_dir: ../models/nv_models
+    analyzer: word
+
+xgboost_config:
+    train_size: 0.9
+    test_size: 0.1
+    emb_dim: 300
+    smote: True
+    max_features: 100000
+    use_embeddings: True
+    embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
+    output_dir: ../models/xgboost_models
+    analyzer: word
