@@ -1,4 +1,4 @@
-filepath: ../data/cleaned/cleaned_dataset.xlsx
+filepath: ../data/min-labels/100/MERCADO_INGRESO.xlsx
 sample_frac: 1
 model: beto                      # beto | roberta | lstm | cnn | logistic | nv | random_forest | svm | xgboost |
 device: cuda                                        # cuda | cpu 

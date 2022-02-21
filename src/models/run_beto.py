@@ -7,7 +7,7 @@ from transformers import BertTokenizer, BertForSequenceClassification, AdamW, ge
 from datasets.datasets import ClaimDataset
 from beto_training.train_beto import train
 from beto_training.evaluate_beto import eval
-from utils.general_utils import format_time, save_plot, save_model, enable_reproducibility
+from utils.general_utils import format_time, save_model, enable_reproducibility
 from utils.beto_utils import prepare_sentences_and_labels, Loader, BetoDataset
 from sklearn import preprocessing
 

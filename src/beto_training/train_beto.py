@@ -16,7 +16,7 @@ def train(y, model, optimizer, scheduler, train_dataloader, device):# Training s
     criterion = SelfAdjDiceLoss()
     class_weights=class_weight.compute_class_weight(class_weight ='balanced',classes = np.unique(y),y = y.numpy())
     class_weights=torch.tensor(class_weights,dtype=torch.float)
-    criterion = nn.CrossEntropyLoss(weight=class_weights,reduction='mean')
+    #criterion = nn.CrossEntropyLoss(weight=class_weights,reduction='mean')
     
 
     t0 = time.time()

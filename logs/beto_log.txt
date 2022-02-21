@@ -1,0 +1,66 @@
+02/19/2022 11:15:14 PM 
+02/19/2022 11:15:14 PM   Loss en el conjunto de entrenamiento: 0.33481745193352425
+02/19/2022 11:15:14 PM   Tiempo de entrenamiento: 0:22:42
+02/19/2022 11:15:14 PM 
+02/19/2022 11:15:14 PM Evaluando.....
+02/19/2022 11:16:10 PM               precision    recall  f1-score   support
+
+           0       0.95      0.96      0.95      4192
+           1       0.96      0.92      0.94      5104
+           2       0.32      0.48      0.39       327
+
+    accuracy                           0.92      9623
+   macro avg       0.74      0.79      0.76      9623
+weighted avg       0.93      0.92      0.93      9623
+
+02/19/2022 11:16:10 PM Micro F1-Score en conjunto de validación: 0.9233087394783331
+02/19/2022 11:16:10 PM Loss en el conjunto de validación: 0.7207800420217736
+02/19/2022 11:16:10 PM 
+02/19/2022 11:38:58 PM 
+02/19/2022 11:38:58 PM   Loss en el conjunto de entrenamiento: 0.33419599813267475
+02/19/2022 11:38:58 PM   Tiempo de entrenamiento: 0:22:48
+02/19/2022 11:38:58 PM 
+02/19/2022 11:38:58 PM Evaluando.....
+02/19/2022 11:39:54 PM               precision    recall  f1-score   support
+
+           0       0.95      0.96      0.95      4192
+           1       0.95      0.98      0.97      5104
+           2       0.67      0.41      0.51       327
+
+    accuracy                           0.95      9623
+   macro avg       0.86      0.78      0.81      9623
+weighted avg       0.94      0.95      0.95      9623
+
+02/19/2022 11:39:54 PM Micro F1-Score en conjunto de validación: 0.9481450691052686
+02/19/2022 11:39:54 PM Loss en el conjunto de validación: 0.7155331050438738
+02/19/2022 11:39:54 PM 
+02/20/2022 12:02:45 AM 
+02/20/2022 12:02:45 AM   Loss en el conjunto de entrenamiento: 0.33394314105918976
+02/20/2022 12:02:45 AM   Tiempo de entrenamiento: 0:22:51
+02/20/2022 12:02:45 AM 
+02/20/2022 12:02:45 AM Evaluando.....
+02/20/2022 12:03:40 AM               precision    recall  f1-score   support
+
+           0       0.95      0.97      0.96      4192
+           1       0.96      0.98      0.97      5104
+           2       0.75      0.29      0.42       327
+
+    accuracy                           0.95      9623
+   macro avg       0.88      0.75      0.78      9623
+weighted avg       0.95      0.95      0.95      9623
+
+02/20/2022 12:03:40 AM Micro F1-Score en conjunto de validación: 0.9508469292320482
+02/20/2022 12:03:40 AM Loss en el conjunto de validación: 0.7113537807203211
+02/20/2022 12:03:40 AM 
+02/20/2022 12:03:40 AM 
+02/20/2022 12:03:40 AM Evaluando.....
+02/20/2022 12:04:36 AM               precision    recall  f1-score   support
+
+           0       0.95      0.98      0.97      4168
+           1       0.97      0.98      0.97      5150
+           2       0.76      0.29      0.42       306
+
+    accuracy                           0.96      9624
+   macro avg       0.89      0.75      0.79      9624
+weighted avg       0.95      0.96      0.95      9624
+

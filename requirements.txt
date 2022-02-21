@@ -9,7 +9,6 @@ click==8.0.3
 cycler==0.11.0
 cymem==2.0.6
 dill==0.3.4
-es-core-news-sm==3.2.0
 et-xmlfile==1.1.0
 filelock==3.4.2
 flatbuffers==2.0
@@ -107,3 +106,6 @@ wrapt==1.13.3
 xgboost==1.5.2
 xlrd==1.2.0
 zipp==3.7.0
+spacy
+pyyaml
+nltk

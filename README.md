@@ -60,10 +60,12 @@ Ejecución.
 
 2. Instalar los requerimientos, para ello basta con que ejecuten el comando `pip install -r requirements.txt`.
 
-3. Descargar el modelo estadístico utilizado para tokenizar: `python -m spacy download es_core_news_sm`
+3. Descargar el modelo estadístico utilizado para tokenizar: `pip install spacy` y `python -m spacy download es_core_news_sm`
 
-4. Si quieren utilizar una gpu NVIDIA, pueden utilizar el siguiente comando para instalar la librería pytorch: `pip3 install torch==1.8.1+cu102 torchvision==0.9.1+cu102 torchaudio===0.8.1 -f https://download.pytorch.org/whl/torch_stable.html`, esto para el caso del modelo BETO, que requiere harta potencia.
+4. Si quieren utilizar una gpu NVIDIA, pueden utilizar el siguiente comando para instalar la librería pytorch: `pip3 install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio==0.10.2+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`, esto para el caso del modelo BETO, que requiere harta potencia.
 
 5. Crear una carpeta data, siguiendo la estructura presentada anteriormente. Situar tanto los archivos en formato excel como también los embeddings. En cuanto a los archivos, se partió de la base de los 2 archivos entregados por la contraparte de la cmf y se procesaron con el Script `format_data.py`, con esto es posible generar el archivo para la carpeta cleaned. El resto de archivos lo pueden solicitar al correo matirojasga@gmail.com. Con respecto a los embeddings, se utilizaron los siguientes: https://github.com/crscardellino/sbwce, en la versión Word2Vec.
 
 6. Modificar los parámetros que deseen en el archivos params.yaml. Importante: El modelo a utilizar se elige al comienzo en el parámetro model, y más adelante salen los parámetros específicos de cada modelo.
+
+- Pandas, Spacy, Pyyaml, Nltk, Matplotlib, Seaborn, Sadice, Sklearn, Openpyxl: paquetes extra a instalar
