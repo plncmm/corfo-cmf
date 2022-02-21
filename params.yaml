@@ -1,6 +1,6 @@
 filepath: ../data/min-labels/100/MERCADO_INGRESO.xlsx
-sample_frac: 1
-model: beto                      # beto | roberta | lstm | cnn | logistic | nv | random_forest | svm | xgboost |
+sample_frac: 0.01
+model: random_forest                      # beto | roberta | lstm | cnn | logistic | nv | random_forest | svm | xgboost |
 device: cuda                                        # cuda | cpu 
 cuda_id: 1                                        # 0, 1 , 2 ..
 
@@ -119,7 +119,7 @@ nv_config:
     emb_dim: 300
     smote: True
     max_features: 100000
-    use_embeddings: True
+    use_embeddings: False # No se utilizarán: ValueError: Negative values in data passed to MultinomialNB (input X), me tira ese error
     embeddings_path: '../data/embeddings/SBW-vectors-300-min5.txt'
     output_dir: ../models/nv_models
     analyzer: word

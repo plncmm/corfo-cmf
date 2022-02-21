@@ -16,6 +16,7 @@ def to_vector(tokens,model, emb_dim):
     
     selected_wv = []
     for token in tokens:
+        token = token.text
         if token.lower() in model.key_to_index:
             selected_wv.append(model[token.lower()])
         elif token.upper() in model.key_to_index:

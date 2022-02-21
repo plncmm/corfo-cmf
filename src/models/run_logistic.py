@@ -8,6 +8,7 @@ from datasets.datasets import ClaimDataset
 from sklearn.linear_model import LogisticRegression
 import os
 import re
+import pickle
 from sklearn.metrics import classification_report
 from utils.sklearn_utils import prepare_data
 from sklearn.model_selection import GridSearchCV

@@ -58,7 +58,7 @@ Ejecución.
 
 1. Luego de haber clonado el repositorio, crear un ambiente con el comando: `python -m venv venv` y activarlo.
 
-2. Instalar los requerimientos, para ello basta con que ejecuten el comando `pip install -r requirements.txt`.
+2. Instalar los requerimientos, para ello basta con que ejecuten el comando `pip install -r requirements.txt` Comprobar que los siguientes paquetes estén instalados: Keras, Tensorflow, Pandas, Spacy, Pyyaml, Nltk, Matplotlib, Seaborn, Sadice, Sklearn, Openpyxl, Imblearn, Gensim.
 
 3. Descargar el modelo estadístico utilizado para tokenizar: `pip install spacy` y `python -m spacy download es_core_news_sm`
 
@@ -66,6 +66,5 @@ Ejecución.
 
 5. Crear una carpeta data, siguiendo la estructura presentada anteriormente. Situar tanto los archivos en formato excel como también los embeddings. En cuanto a los archivos, se partió de la base de los 2 archivos entregados por la contraparte de la cmf y se procesaron con el Script `format_data.py`, con esto es posible generar el archivo para la carpeta cleaned. El resto de archivos lo pueden solicitar al correo matirojasga@gmail.com. Con respecto a los embeddings, se utilizaron los siguientes: https://github.com/crscardellino/sbwce, en la versión Word2Vec.
 
-6. Modificar los parámetros que deseen en el archivos params.yaml. Importante: El modelo a utilizar se elige al comienzo en el parámetro model, y más adelante salen los parámetros específicos de cada modelo.
+6. Modificar los parámetros que deseen en el archivo params.yaml. Importante: El modelo a utilizar se elige al comienzo en el parámetro model, y más adelante salen los parámetros específicos de cada modelo.
 
-- Pandas, Spacy, Pyyaml, Nltk, Matplotlib, Seaborn, Sadice, Sklearn, Openpyxl: paquetes extra a instalar

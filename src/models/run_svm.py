@@ -9,6 +9,7 @@ import numpy as np
 from datasets.datasets import ClaimDataset
 import os
 import re
+import pickle
 from sklearn.metrics import classification_report
 from utils.sklearn_utils import prepare_data
 from sklearn.model_selection import GridSearchCV
