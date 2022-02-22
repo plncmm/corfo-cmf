@@ -1,6 +1,6 @@
 filepath: ../data/min-labels/100/MERCADO_INGRESO.xlsx
 sample_frac: 0.01
-model: random_forest                      # beto | roberta | lstm | cnn | logistic | nv | random_forest | svm | xgboost |
+model: xgboost                     # beto | roberta | lstm | cnn | logistic | nv | random_forest | svm | xgboost |
 device: cuda                                        # cuda | cpu 
 cuda_id: 1                                        # 0, 1 , 2 ..
 
