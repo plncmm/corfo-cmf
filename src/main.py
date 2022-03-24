@@ -16,4 +16,4 @@ for k, v in config[f"{model_name}_config"].items():
 
 print('')
 
-call(["python", f"models/run_{model_name}.py"])    # Ejecutamos el Script correspondiente al modelo.´'p
+call(["python", f"scripts/run_{model_name}.py"])    # Ejecutamos el Script correspondiente al modelo.´'p

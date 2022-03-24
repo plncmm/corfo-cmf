@@ -4,54 +4,54 @@ Clasificador de reclamos - Etapa 1 Reto Corfo CMF
 Organización del repositorio.
 ------------
 
-    ├── README.md          <- Documentación del código.
-    ├── data
-    │   ├── raw            <- Archivos originales entregados por la contraparte del proyecto.
-    │   ├── cleaned        <- Dataset resultante luego de procesar los datos originales, está desbalanceado.
-    │   ├── balanced       <- Versión del dataset con clases balanceadas.
-    │   ├── min-labels     <- Versión del dataset desbalanceado pero que exige una cantidad mínima de labels.
-    │   ├── embeddings     <- Word embeddings utilizados en nuestros experimentos.
+    ├── README.md                           <- Documentación del código.
+    ├── data                                <- Carpeta con los datos necesarios para ejecutar el proyecto.
+    │   ├── cleaned                         <- Dataset resultante luego de procesar los datos originales.
+    │   ├── embeddings                      <- Word embeddings utilizados en nuestros experimentos.
+    │   ├── input_files                     <- Directorio con los archivos utilizados para el entrenamiento de cada clasificador. 
+    │   ├── raw                             <- Archivos originales entregados por la contraparte del proyecto.
+    │   └── cleaned                         <- Dataset resultante luego de procesar los datos originales, está desbalanceado.
     │
-    │── logs               <- Carpeta que contiene los logs de cada experimento.
+    ├── logs                                <- Carpeta que contiene los logs del entrenamiento de cada clasificador.
     │
-    ├── params.yaml        <- Archivo que contiene todas las configuraciones del proyecto.
+    ├── models                              <- Carpeta que almacena los modelos pre-entrenados.
     │
-    │── models             <- Carpeta que almacena los modelos pre-entrenados.
-    │
-    ├── reports            
-    │   └── report.ppt     <- Presentación con resumen de resultados.
-    │
-    ├── requirements.txt   <- Archivo con los requerimientos de librerías para poder ejecutar el proyecto.
-    │
-    ├── src                <- Principal código del proyecto.
+    ├── src                                 <- Código principal del proyecto.
     │   │
-    │   ├── datasets       <- Modulo útil para generar el Dataframe de reclamos, con el procesamiento requerido.
-    │   │   └── datasets.py
-    │   │
-    │   ├── beto_training  <- Scripts útiles para el entrenamiento e inferencia del modelo beto
-    │   │   └── evaluate_beto.py
-    │   │   └── infer_beto.py
+    │   ├── beto_training                   <- Scripts útiles para el entrenamiento y validación del modelo beto.
+    │   │   ├── evaluate_beto.py
     │   │   └── train_beto.py
     │   │
-    │   ├── models         <- Scripts para entrenar los diferentes modelos de nuestros experimentos.
-    │   │   └── run_beto.py
-    │   │   └── run_cnn.py
-    │   │   └── run_logistic.py
-    │   │   └── run_lstm.py
-    │   │   └── run_nv.py
-    │   │   └── run_roberta.py
-    │   │   └── run_svm.py
-    │   │   └── run_xgboost.py
-    │   │   └── run_xlnet.py
+    │   ├── datasets                        <- Modulo útil para generar el Dataframe de reclamos, con el procesamiento especificado en el archivo params.yaml
+    │   │   └── datasets.py
     │   │
-    │   │── utils         <- Script útiles para el entrenamiento y validación de los modelos.
-    │   │   └── beto_utils.py 
-    │   │   └── format_data.py
-    │   │   └── general_utils.py
-    │   │   └── lstm_cnn_utils.py
+    │   ├── scripts                         <- Scripts de ejecución de cada uno de los modelos probados para la clasificación.
+    │   │   ├── run_beto.py
+    │   │   ├── run_cnn.py
+    │   │   ├── run_logistic.py
+    │   │   ├── run_lstm.py
+    │   │   ├── run_nv.py
+    │   │   ├── run_random_forest.py
+    │   │   ├── run_roberta.py
+    │   │   ├── run_svm.py
+    │   │   ├── run_xgboost.py
+    │   │   └── ner_matcher.py              <- Clasificador en proceso de desarrollo para el caso de nombre de entidades.
+    │   │
+    │   ├── utils                           <- Scripts útiles para el entrenamiento de los modelos, y el formato de datos.
+    │   │   ├── beto_cross_validation.py 
+    │   │   ├── beto_utils.py 
+    │   │   ├── create_input.py 
+    │   │   ├── format_data.py
+    │   │   ├── general_utils.py
+    │   │   ├── lstm_cnn_utils.py
     │   │   └── sklearn_utils.py
     │   │
-    │   └── main.py        <- Script que ejecuta el modelo según lo específicado en el archivo yaml.
+    │   ├── main.py                         <- Script que ejecuta el modelo según lo específicado en el archivo yaml.
+    │   └── beto_infer.py                   <- Script utilizado para predecir las etiquetas de los datos sin clasificación.
+    │ 
+    ├── params.yaml                         <- Archivo que contiene todas las configuraciones del proyecto.
+    │
+    └── requirements.txt                    <- Archivo con los requerimientos de librerías para poder ejecutar el proyecto.
 
 Ejecución.
 ------------
