@@ -13,11 +13,14 @@ class ClaimDataset:
         self.sentences, self.labels, self.df = self.get_sentences_and_labels(sample, pre_processing["label"], pre_processing["do_lower_case"], pre_processing["remove_punctuation"], pre_processing["remove_stopwords"], pre_processing["remove_frequent_words"], pre_processing["stemming"], pre_processing["remove_short_examples"], pre_processing["lemmatization"])
 
     def get_sentences_and_labels(self, sample, label, do_lower_case, remove_punctuation, remove_stopwords, remove_frequent_words, stemming, remove_short_examples, lemmatization):
+        
         if self.filepath == 'cleaned_dataset.xlsx': 
             col_names = ["MERCADO_INGRESO", "TIPO_ENTIDAD", "NOMBRE_ENTIDAD", "TIPO_PRODUCTO", "TIPO_MATERIA", "text"]
         else:
-            col_names = ["text", label]
+            col_names = ["Reclamo", label]
+        
         df = pd.read_excel(self.filepath, usecols=col_names)
+        df.rename(columns={'Reclamo': 'text'}, inplace = True)
         df.rename(columns={label: 'label'}, inplace = True)
         
         avg_len = np.mean([len(v.split()) for v in df['text']])
@@ -68,7 +71,7 @@ class ClaimDataset:
             df["text"] = df["text"].apply(lambda text: stem_words(text))
         
         if remove_short_examples:
-            df = df[df['text'].apply(lambda x: len(x.split()) > 10)]
+            df = df[df['text'].apply(lambda x: len(x.split()) > 20)]
           
             
         # ToDO: Lemmatizer, Balanceo de clases.

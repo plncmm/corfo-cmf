@@ -1,40 +1,40 @@
-filepath: ../data/min-labels/100/MERCADO_INGRESO.xlsx
-sample_frac: 0.01
-model: xgboost                     # beto | roberta | lstm | cnn | logistic | nv | random_forest | svm | xgboost |
-device: cuda                                        # cuda | cpu 
-cuda_id: 1                                        # 0, 1 , 2 ..
+filepath: ../data/input_files/seguros_valores_tipo_materia.xlsx # Directorio del archivo asociado de la clasificación.
+sample_frac: 1 # Decimal que representa el porcentaje de datos a muestrear del dataset leído. Para debuggear es recomendable usar un subconjunto pequeño.
+model: beto # Modelo a utilizar, las opciones son: beto, roberta, lstm, cnn, logistic, nv, random_forest, svm, xgboost.
+device: cuda # Utilizar cuda o cpu
+cuda_id: 0 # ID asociado a la gpu en caso que se seleccione la opción cuda en el parámetro anterior.
 
 pre_processing:
-  label: MERCADO_INGRESO                            # MERCADO_INGRESO | TIPO_ENTIDAD | TIPO_PRODUCTO | TIPO_MATERIA | NOMBRE_ENTIDAD |
-  do_lower_case: False                         
-  remove_punctuation: False
-  remove_stopwords: False
-  remove_frequent_words: False
-  stemming: False
-  remove_short_examples: False
-  lemmatization: False
+  label: TIPO_MATERIA # Seleccionar que clasificación se realiza, las opciones son: MERCADO_INGRESO, TIPO_ENTIDAD, TIPO_PRODUCTO, TIPO_MATERIA, NOMBRE_ENTIDAD
+  do_lower_case: True # Pasar las palabras a minúsculas antes del entrenamiento. Esto es recomendable                         
+  remove_punctuation: False # Remover puntuaciones
+  remove_stopwords: False # Remover las palabras más comunes del Español
+  remove_frequent_words: False # Remover palabras frecuentes en el corpus
+  stemming: False # Realizar un stemming 
+  remove_short_examples: False # Remover ejemplos cortos
+  lemmatization: False # Lematizar las palabras (ToDo)
   
 beto_config: 
-    train_size: 0.8
-    val_size: 0.1
-    test_size: 0.1
-    version: uncased
-    batch_size: 16
-    epochs: 3 
-    lr: 2e-5 
-    eps: 1e-8
-    weight_decay_rate: 0.01
-    num_warmup_steps: 0 # 10% * datasetSize/batchSize
-    max_len: 512
-    output_dir: ../models/beto_models
+    train_size: 0.8 # Proporción de datos a utilizar en el conjunto de entrenamiento. [0,1]
+    val_size: 0.1 # Proporción de datos a utilizar en el conjunto de validación. [0,1]
+    test_size: 0.1 # Proporción de datos a utilizar en el conjunto de test. [0,1]
+    version: uncased # Elegir si utilizar el modelo de BETO uncased (entrenado con texto en minúsculas) o la versión cased entrenado sobre todos los casos.
+    batch_size: 16 # Tamaño del batch a utilizar en el entrenamiento.
+    epochs: 3  # Número de épocas a entrenar el modelo.
+    lr: 2e-5  # Tasa de aprendizaje.
+    eps: 1e-8 # Adam epsilon
+    weight_decay_rate: 0.01 # Regularización
+    num_warmup_steps: 0 # Valor recomendado si no es 0: 10% * datasetSize/batchSize
+    max_len: 512 # Máximo largo de secuencia
+    output_dir: ../models/seguros_valores_tipo_materia # Directorio donde se guardará el modelo pre-entrenado.
 
 roberta_config: 
     train_size: 0.8
     val_size: 0.1
     test_size: 0.1
-    batch_size: 8 # 8
-    epochs: 3 # 3
-    lr: 2e-5 # 2 e-5
+    batch_size: 8 
+    epochs: 3 
+    lr: 2e-5 
     eps: 1e-8
     weight_decay_rate: 0.01
     num_warmup_steps: 0

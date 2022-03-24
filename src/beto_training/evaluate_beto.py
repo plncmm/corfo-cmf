@@ -42,25 +42,53 @@ def eval(model, dataloader, device, type = 'val'):
             y_pred.extend(pred)
             y_true.extend(true)
 
+   
+
     f1 = f1_score(y_true, y_pred, average='micro')
     if type == 'test': 
         print(classification_report(y_true, y_pred))
         logging.info(classification_report(y_true, y_pred))
-    if type == 'val': 
+        p = precision_score(y_true, y_pred, average='weighted')
+        r = recall_score(y_true, y_pred, average='weighted')
+        f = f1_score(y_true, y_pred, average='weighted')
+        acc = accuracy_score(y_true, y_pred)
+        print(f'Accuracy: {acc}')
+        print(f'Precision: {p}')
+        print(f'Recall: {r}')
+        print(f"Weighted F1-Score en conjunto de test: {f}")
 
+        logging.info(f'Accuracy: {acc}')
+        logging.info(f'Precision: {p}')
+        logging.info(f'Recall: {r}')
+        logging.info(f"Weighted F1-Score en conjunto de test: {f}")
+        
+    if type == 'val': 
+        
+        p = precision_score(y_true, y_pred, average='weighted')
+        r = recall_score(y_true, y_pred, average='weighted')
+        f = f1_score(y_true, y_pred, average='weighted')
+        acc = accuracy_score(y_true, y_pred)
+        print(f'Accuracy: {acc}')
+        print(f'Precision: {p}')
+        print(f'Recall: {r}')
+        print(f"Weighted F1-Score en conjunto de validación: {f}")
+        logging.info(f'Accuracy: {acc}')
+        logging.info(f'Precision: {p}')
+        logging.info(f'Recall: {r}')
+        logging.info(f"Weighted F1-Score en conjunto de validación: {f}")
+        
         print(classification_report(y_true, y_pred))
         logging.info(classification_report(y_true, y_pred))
-        print(f"Micro F1-Score en conjunto de validación: {f1}")
-        logging.info(f"Micro F1-Score en conjunto de validación: {f1}")
 
     avg_val_loss = total_eval_loss / len(dataloader)
     validation_time = format_time(time.time() - t0)
+    print(f"Loss en el conjunto de validación: {avg_val_loss}")
+    print("")
+    logging.info(f"Loss en el conjunto de validación: {avg_val_loss}")
+    logging.info("")
     
-    if type=='val':
-        print(f"Loss en el conjunto de validación: {avg_val_loss}")
-        print("")
-        logging.info(f"Loss en el conjunto de validación: {avg_val_loss}")
-        logging.info("")
+
+        
     return avg_val_loss, f1, validation_time
 
     

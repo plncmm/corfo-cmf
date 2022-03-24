@@ -13,11 +13,11 @@ import numpy as np
 
 def train(y, model, optimizer, scheduler, train_dataloader, device):# Training steps: batches * epochs
     print("")
-    criterion = SelfAdjDiceLoss()
-    class_weights=class_weight.compute_class_weight(class_weight ='balanced',classes = np.unique(y),y = y.numpy())
-    class_weights=torch.tensor(class_weights,dtype=torch.float)
+    #criterion = SelfAdjDiceLoss()
+    #class_weights=class_weight.compute_class_weight(class_weight ='balanced',classes = np.unique(y),y = y.numpy())
+    #class_weights=torch.tensor(class_weights,dtype=torch.float)
     #criterion = nn.CrossEntropyLoss(weight=class_weights,reduction='mean')
-    
+    criterion = nn.CrossEntropyLoss()
 
     t0 = time.time()
     total_train_loss = 0
@@ -57,5 +57,5 @@ def train(y, model, optimizer, scheduler, train_dataloader, device):# Training s
     logging.info("")
     logging.info(f"  Loss en el conjunto de entrenamiento: {avg_train_loss}")
     logging.info(f"  Tiempo de entrenamiento: {training_time}")
-
+    
     return avg_train_loss, training_time

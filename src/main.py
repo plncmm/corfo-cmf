@@ -16,7 +16,4 @@ for k, v in config[f"{model_name}_config"].items():
 
 print('')
 
-if model_name in ('beto', 'roberta', 'xlnet') and config["device"] == 'cuda': # Si es que trabajamos con modelos de la librería transformers, utilizamos cuda.
-    torch.cuda.set_device(config["cuda_id"])
-
-call(["python", f"models/run_{model_name}.py"])    # Ejecutamos el Script correspondiente al modelo.
+call(["python", f"models/run_{model_name}.py"])    # Ejecutamos el Script correspondiente al modelo.´'p

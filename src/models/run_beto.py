@@ -10,10 +10,15 @@ from beto_training.evaluate_beto import eval
 from utils.general_utils import format_time, save_model, enable_reproducibility
 from utils.beto_utils import prepare_sentences_and_labels, Loader, BetoDataset
 from sklearn import preprocessing
-
+from utils.general_utils import load_model
+import re 
+import csv
+import numpy as np 
+import pandas as pd
+import torch 
+from torch.utils.data import random_split, TensorDataset, DataLoader, RandomSampler, SequentialSampler
 if __name__=='__main__':
     # Creamos un log para registrar el entrenamiento y validación del modelo.
-    logging.basicConfig(filename='../logs/beto_log.txt', filemode='w', format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
     
     # Garantizamos reproducibilidad en nuestros experimentos.
     enable_reproducibility(seed_val = 1000)
@@ -22,7 +27,18 @@ if __name__=='__main__':
     with open('../params.yaml') as file:
         config = yaml.safe_load(file)
 
+    model_name = config["model"]
+    
+    if model_name in ('beto', 'roberta', 'xlnet') and config["device"] == 'cuda': # Si es que trabajamos con modelos de la librería transformers, utilizamos cuda.
+        torch.cuda.set_device(config["cuda_id"])
+
     filepath = config["filepath"]
+    filename = filepath.split('.')[-2].split('/')[-1]
+    output_labels = open(f'{filename}_target_names.txt', 'w')
+
+
+    logging.basicConfig(filename=f'../logs/{filename}_log.txt', filemode='w', format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
+    
     model = config["model"]
     device = config["device"]
     pre_processing = config["pre_processing"]
@@ -41,6 +57,14 @@ if __name__=='__main__':
     labels = le.fit_transform(labels)
     target_names = list(le.classes_)
     
+    for t in target_names:
+        output_labels.write(t+'\n')
+    
+    output_labels.close()
+    
+    
+    
+
     do_lower_case = True if beto_config["version"]=='uncased' else False
     model_name = 'dccuchile/bert-base-spanish-wwm-uncased' if do_lower_case else 'dccuchile/bert-base-spanish-wwm-cased'
     tokenizer = BertTokenizer.from_pretrained(model_name, do_lower_case = do_lower_case)
@@ -113,6 +137,8 @@ if __name__=='__main__':
     
     print("Probando el modelo en el conjunto de Testing .....")
 
-    eval(model, testing_dataloader, device, 'test')
-
     save_model(model, tokenizer, beto_config["output_dir"])
+    bert_model = load_model(model, tokenizer, beto_config["output_dir"], 'cuda')
+    eval(bert_model, testing_dataloader, device, 'test')
+
+
