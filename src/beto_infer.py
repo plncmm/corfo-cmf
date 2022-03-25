@@ -363,9 +363,7 @@ if __name__ == '__main__':
         output.write('\n')
         
     del df['Reclamo']
-    df.to_excel('model_predictions_final.xlsx')
+    df.to_excel('predictions.xlsx')
     output.close()
     print(time.time()-t0)
     print('    DONE.')
-    df1 = pd.DataFrame(table)
-    df1.to_excel('model_predictions.xlsx')
