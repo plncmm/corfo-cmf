@@ -57,7 +57,7 @@ Organización del repositorio.
 Configuraciones previas.
 ------------
 
-1. El primer paso es clonar el proyecto. Si lo hacen desde el terminal, utilizar el comando: `https://github.com/plncmm/corfo-etapa-1.git`
+1. El primer paso es clonar el proyecto. Si lo hacen desde el terminal, utilizar el comando: `https://github.com/plncmm/corfo-cmf.git`
 
 2. Luego de obtener el código, crear un ambiente virtual dentro de la carpeta del repositorio. Esto nos permitirá instalar las librerías necesarias. Para realizar esto, usar el comando: `python3 -m venv venv`. Luego, debe ser activado de la siguiente manera: Entrar al directorio `venv` con el comando `cd venv`, luego `cd bin`, y finalmente `source ./activate`. Volver a la carpeta raíz del proyecto.
 
